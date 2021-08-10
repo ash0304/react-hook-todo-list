@@ -1,15 +1,25 @@
 import React from 'react';
 
-const Todo = (props) => {
-  const content = props.todos.map((todo, index) => {
-    return (
-      <div key={todo.id} className="todo-row">
-        <div style={{color: 'white'}}>{todo.text}</div>
-      </div>
-    );
-  });
+import { RiCloseCircleLine } from 'react-icons/ri';
+import { TiEdit } from 'react-icons/ti';
 
-  return <React.Fragment>{content}</React.Fragment>;
+const Todo = (props) => {
+
+  return (
+    <React.Fragment>
+      {props.todos.map((todo, index) => {
+        return (
+          <div key={index} className="todo-row">
+            <div key={todo.id}>{todo.text}</div>
+            <div className="icons">
+              <RiCloseCircleLine className="delete-icon" />
+              <TiEdit className="edit-icon" />
+            </div>
+          </div>
+        );
+      })}
+    </React.Fragment>
+  );
 };
 
 export default Todo;
