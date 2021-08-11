@@ -14,11 +14,16 @@ const TodoList = (props) => {
     setTodos(newTodos);
   };
 
+  const onDeleteHandler = (id) => {
+    const removedArr = [...todos].filter((todo) => todo.id !== id);
+    setTodos(removedArr);
+  };
+
   return (
     <React.Fragment>
       <h1>What's the Plan for Today?</h1>
       <TodoForm onSubmit={addTodo} />
-      <Todo todos={todos} />
+      <Todo todos={todos} onDelete={onDeleteHandler} />
     </React.Fragment>
   );
 };
