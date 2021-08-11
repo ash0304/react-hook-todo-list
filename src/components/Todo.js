@@ -36,7 +36,7 @@ const Todo = (props) => {
 
   // edit feature
   if (edit.id) {
-    return <TodoForm edit={edit} onFormEdit={formEditHandler} editing={true} />;
+    return <TodoForm edit={edit} onFormEdit={formEditHandler} />;
   }
 
   return (
