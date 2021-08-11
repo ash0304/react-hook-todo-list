@@ -19,11 +19,27 @@ const TodoList = (props) => {
     setTodos(removedArr);
   };
 
+  const onCompleteHandler = (id) => {
+    let updatedArr = todos.map((todo) => {
+      // chnage the status of todo item
+      if (todo.id === id) {
+        todo.isComplete = !todo.isComplete;
+      }
+      return todo;
+    });
+
+    setTodos(updatedArr);
+  };
+
   return (
     <React.Fragment>
       <h1>What's the Plan for Today?</h1>
       <TodoForm onSubmit={addTodo} />
-      <Todo todos={todos} onDelete={onDeleteHandler} />
+      <Todo
+        todos={todos}
+        onDelete={onDeleteHandler}
+        onComplete={onCompleteHandler}
+      />
     </React.Fragment>
   );
 };
