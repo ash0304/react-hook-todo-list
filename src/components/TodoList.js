@@ -4,13 +4,16 @@ import Todo from './Todo';
 import TodoForm from './TodoForm';
 
 const TodoList = (props) => {
-  const [todos, setTodos] = useState([]);
+  const key = 'todoList';
+  const savedList = JSON.parse(localStorage.getItem(key));
+  const [todos, setTodos] = useState(savedList ? savedList : []);
 
   const addTodo = (todo) => {
     // to prevent add empty string
     if (!todo.text) return;
 
     const newTodos = [todo, ...todos];
+    localStorage.setItem(key, JSON.stringify(newTodos));
     setTodos(newTodos);
   };
 
@@ -23,11 +26,13 @@ const TodoList = (props) => {
       return todo;
     });
 
+    localStorage.setItem(key, JSON.stringify(updatedArr));
     setTodos(updatedArr);
   };
 
   const onDeleteHandler = (id) => {
     const removedArr = [...todos].filter((todo) => todo.id !== id);
+    localStorage.setItem(key, JSON.stringify(removedArr));
     setTodos(removedArr);
   };
 
@@ -41,6 +46,7 @@ const TodoList = (props) => {
       const updateTodos = prev.map((todo) => {
         return todo.id === newTodo.id ? newTodo : todo;
       });
+      localStorage.setItem(key, JSON.stringify(updateTodos));
       return updateTodos;
     });
   };
