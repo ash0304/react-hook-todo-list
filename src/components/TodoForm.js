@@ -1,7 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 const TodoForm = (props) => {
+  const ref = useRef();
   const [input, setInput] = useState(props.edit ? props.edit.value : '');
+
+  useEffect(() => {
+    // to implete the function that focus input when init the website
+    ref.current.focus();
+  }, []);
 
   const changeHandler = (e) => {
     setInput(e.target.value);
@@ -49,6 +55,7 @@ const TodoForm = (props) => {
       ) : (
         <React.Fragment>
           <input
+            ref={ref}
             placeholder="Add a todo"
             type="text"
             name="text"
