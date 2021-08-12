@@ -49,6 +49,7 @@ const TodoForm = (props) => {
             className="todo-input edit"
             value={input}
             onChange={changeHandler}
+            maxLength="15"
           />
           <button className="todo-button edit">Update</button>
         </React.Fragment>
@@ -62,6 +63,7 @@ const TodoForm = (props) => {
             className="todo-input"
             value={input}
             onChange={changeHandler}
+            maxLength="15"
           />
           <button className="todo-button">Add todo</button>
         </React.Fragment>
