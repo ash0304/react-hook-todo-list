@@ -43,6 +43,7 @@ const TodoForm = (props) => {
       {props.edit ? (
         <React.Fragment>
           <input
+            ref={ref}
             placeholder="Update your todo item"
             type="text"
             name="text"
